@@ -15,7 +15,7 @@ export default function PageHeader({ user, handleLogout }) {
                 <Link style={{ color: 'violet' }} to={`/${user.username}`}><Image src={user.photoUrl ? user.photoUrl : "https://react.semantic-ui.com/images/wireframe/square-image.png"} avatar></Image>{user.username.toUpperCase()}</Link>
             </Header>
             <Header as='h1' textAlign='center' color='violet' dividing>
-                LiftaGram
+                <span id="liftagram" >LiftaGram</span>
             </Header>
         </Segment>
     )

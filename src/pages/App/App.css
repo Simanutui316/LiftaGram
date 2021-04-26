@@ -24,6 +24,11 @@
   color: white;
 }
 
+#liftagram{
+  font-family: 'Lobster', cursive;
+  font-size: 8vh;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -36,3 +41,4 @@
     transform: rotate(360deg);
   }
 }
+

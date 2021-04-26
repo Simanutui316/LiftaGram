@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react'
 
-export default function AddPuppyForm(props) {
+export default function AddLiftForm(props) {
     const [selectedFile, setSelectedFile] = useState('')
     const [state, setState] = useState({
         caption: ''
@@ -22,7 +22,7 @@ export default function AddPuppyForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log('is handlesUbmit being called?')
+        console.log('is handleSubmit being called?')
 
         // Why do we need to create FormData
         // what type of request are we making?

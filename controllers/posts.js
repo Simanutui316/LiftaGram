@@ -3,7 +3,7 @@ const S3 = require('aws-sdk/clients/s3');
 const { v4: uuidv4 } = require('uuid');
 const s3 = new S3();
 
-const BUCKET_NAME = process.env.DOGGOS_BUCKET
+const BUCKET_NAME = process.env.BUCKET_NAME
 
 module.exports = {
     create,

@@ -4,7 +4,7 @@ import userService from '../../utils/userService';
 import ProfileBio from '../../components/ProfileBio/ProfileBio';
 import PostFeed from '../../components/PostFeed/PostFeed';
 import PageHeader from '../../components/Header/Header';
-// import * as likesApi from '../../utils/likesService';
+import * as likesApi from '../../utils/likesServices';
 import { useLocation } from 'react-router-dom';
 
 export default function ProfilePage({ user, handleLogout }) {
@@ -18,25 +18,25 @@ export default function ProfilePage({ user, handleLogout }) {
     console.log(location)
 
 
-    // async function addLike(postId) {
-    //     try {
-    //         const data = await likesApi.create(postId)
-    //         console.log(data, ' response from addLike')
-    //         getProfile()
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
+    async function addLike(postId) {
+        try {
+            const data = await likesApi.create(postId)
+            console.log(data, ' response from addLike')
+            getProfile()
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
-    // async function removeLike(likeId) {
-    //     try {
-    //         const data = await likesApi.removeLike(likeId);
-    //         console.log(data, ' response from removeLike')
-    //         getProfile()
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
+    async function removeLike(likeId) {
+        try {
+            const data = await likesApi.removeLike(likeId);
+            console.log(data, ' response from removeLike')
+            getProfile()
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
 
 
@@ -97,8 +97,7 @@ export default function ProfilePage({ user, handleLogout }) {
                     </Grid.Row>
                     <Grid.Row centered>
                         <Grid.Column style={{ maxWidth: 750 }}>
-                            <PostFeed isProfile={true} posts={posts} numPhotosCol={3} user={user} //addLike={addLike} removeLike={removeLike}
-                            />
+                            <PostFeed isProfile={true} posts={posts} numPhotosCol={3} user={user} addLike={addLike} removeLike={removeLike} />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

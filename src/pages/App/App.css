@@ -31,7 +31,20 @@ flex-wrap: wrap;
 justify-content: center;
 /* for vertical aligning */
 align-items: center;
-margin: 5px;
+
+}
+.gram{
+  color:red;
+}
+.gram:hover{
+  color:rgba(209, 5, 5, 0.424);
+}
+
+
+.logout{
+  font-size: 5vh;
+  color: white;
+  font-family: 'Jomhuria', cursive;
 }
 
 /* #liftagram{
@@ -39,13 +52,15 @@ margin: 5px;
   font-size: 8vh;
 } */
 .liftagram{
- color: rgb(160, 11, 160);
+ color: rgb(17, 110, 216);
  font-weight: bold;
  font-family: 'Lobster', cursive;
   font-size: 8vh;
 }
 
-
+a:hover {
+ color:white;
+}
 
 .App-link {
   color: #61dafb;

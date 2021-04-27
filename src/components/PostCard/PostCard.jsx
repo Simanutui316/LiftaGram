@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, Icon, Image, Feed } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
+import { GiWeightLiftingUp } from 'react-icons/gi';
+
 
 function PostCard({ post, isProfile, addLike, removeLike, user }) {
 
@@ -40,10 +42,10 @@ function PostCard({ post, isProfile, addLike, removeLike, user }) {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra textAlign={'right'}>
-                <Icon name={'heart'} size='large' onClick={clickHandler} color={likeColor} />
+                {/* <Icon name={'GiWeightLiftingUp'} size='large' onClick={clickHandler} color={likeColor} /> */}
+                <GiWeightLiftingUp color={likeColor} onClick={clickHandler} size='2vh' />
                 {post.likes.length} Likes
-
-      </Card.Content>
+            </Card.Content>
         </Card>
     );
 }

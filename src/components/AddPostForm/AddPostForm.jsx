@@ -51,6 +51,7 @@ export default function AddLiftForm(props) {
                             onChange={handleChange}
                             required
                         />
+
                         <Form.Input
                             className="form-control"
                             type="file"
@@ -60,9 +61,9 @@ export default function AddLiftForm(props) {
                         />
                         <Button
                             type="submit"
-                            className="btn violet"
+                            className="btn red"
                         >
-                            Show Off!
+                            Add Lift!
               </Button>
                     </Form>
                 </Segment>

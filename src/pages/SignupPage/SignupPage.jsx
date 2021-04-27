@@ -12,6 +12,7 @@ export default function SignUpPage(props) {
     const [state, setState] = useState({
         username: '',
         email: '',
+        total: '',
         password: '',
         passwordConf: '',
         bio: ''
@@ -73,7 +74,7 @@ export default function SignUpPage(props) {
 
     return (
         <>
-            <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+            <Grid className='container-login' textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='violet' textAlign='center'>
                         <Image src='https://i.imgur.com/Bo1xQk7.png' /> Sign Up
@@ -108,6 +109,14 @@ export default function SignUpPage(props) {
                                 type="password"
                                 placeholder="Confirm Password"
                                 value={state.passwordConf}
+                                onChange={handleChange}
+                                required
+                            />
+                            <Form.Input
+                                className="total"
+                                name="total"
+                                value={state.total}
+                                placeholder="Gym Total?"
                                 onChange={handleChange}
                                 required
                             />

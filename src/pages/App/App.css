@@ -33,12 +33,18 @@ justify-content: center;
 align-items: center;
 
 }
+
+.container-login{
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fgetwallpapers.com%2Fwallpaper%2Ffull%2F3%2Fd%2Fa%2F92243.jpg&f=1&nofb=1');
+}
+
 .gram{
   color:red;
+
 }
-.gram:hover{
-  color:rgba(209, 5, 5, 0.424);
-}
+/* .gram:hover{
+  color:;
+} */
 
 
 .logout{
@@ -57,7 +63,9 @@ align-items: center;
  font-family: 'Lobster', cursive;
   font-size: 8vh;
 }
-
+a{
+  color: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fgetwallpapers.com%2Fwallpaper%2Ffull%2F3%2Fd%2Fa%2F92243.jpg&f=1&nofb=1');
+}
 a:hover {
  color:white;
 }
@@ -79,4 +87,8 @@ body{
   background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapertag.com%2Fwallpaper%2Ffull%2F1%2Fa%2Fe%2F438271-black-steel-background-1920x1200-full-hd.jpg&f=1&nofb=1');
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+.profile-name{
+  background-color: white;
 }

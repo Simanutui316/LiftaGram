@@ -24,10 +24,28 @@
   color: white;
 }
 
-#liftagram{
+.logout-icon{
+  display: flex;
+flex-wrap: wrap;
+/* for horizontal aligning of child divs */
+justify-content: center;
+/* for vertical aligning */
+align-items: center;
+margin: 5px;
+}
+
+/* #liftagram{
   font-family: 'Lobster', cursive;
   font-size: 8vh;
+} */
+.liftagram{
+ color: rgb(160, 11, 160);
+ font-weight: bold;
+ font-family: 'Lobster', cursive;
+  font-size: 8vh;
 }
+
+
 
 .App-link {
   color: #61dafb;
@@ -42,3 +60,8 @@
   }
 }
 
+body{
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapertag.com%2Fwallpaper%2Ffull%2F1%2Fa%2Fe%2F438271-black-steel-background-1920x1200-full-hd.jpg&f=1&nofb=1');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}

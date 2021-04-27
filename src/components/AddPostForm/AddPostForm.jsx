@@ -37,7 +37,7 @@ export default function AddLiftForm(props) {
 
     return (
 
-        <Grid textAlign='center' style={{ height: '25vh' }} verticalAlign='middle'>
+        <Grid textAlign='center' verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
                 <Segment>
 

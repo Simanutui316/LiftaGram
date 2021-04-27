@@ -4,6 +4,7 @@ import userService from '../../utils/userService';
 import ProfileBio from '../../components/ProfileBio/ProfileBio';
 import PostFeed from '../../components/PostFeed/PostFeed';
 import PageHeader from '../../components/Header/Header';
+import SignupPage from '../SignupPage/SignupPage'
 import * as likesApi from '../../utils/likesServices';
 import { useLocation } from 'react-router-dom';
 
@@ -84,7 +85,7 @@ export default function ProfilePage({ user, handleLogout }) {
 
                 </Grid>
                 :
-                <Grid>
+                <Grid className='profile-feed'>
                     <Grid.Row>
                         <Grid.Column>
                             <PageHeader user={user} handleLogout={handleLogout} />
@@ -97,7 +98,7 @@ export default function ProfilePage({ user, handleLogout }) {
                     </Grid.Row>
                     <Grid.Row centered>
                         <Grid.Column style={{ maxWidth: 750 }}>
-                            <PostFeed isProfile={true} posts={posts} numPhotosCol={3} user={user} addLike={addLike} removeLike={removeLike} />
+                            <PostFeed isProfile={true} posts={posts} bio={user.bio} numPhotosCol={3} user={user} addLike={addLike} removeLike={removeLike} />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

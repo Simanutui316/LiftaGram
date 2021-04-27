@@ -25,7 +25,7 @@ function PostCard({ post, isProfile, addLike, removeLike, user }) {
             {isProfile ? ''
                 :
                 <Card.Content textAlign='left'>
-                    <Link style={{ color: 'white', }} to={`/${post.user}`}><Image
+                    <Link style={{ color: 'white', }} to={`/${post.user.username}`}><Image
                         floated='left'
                         size='large'
                         avatar
@@ -47,6 +47,7 @@ function PostCard({ post, isProfile, addLike, removeLike, user }) {
                 {post.likes.length} Likes
             </Card.Content>
         </Card>
+
     );
 }
 

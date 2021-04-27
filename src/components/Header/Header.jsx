@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Header, Segment, Image, Icon } from 'semantic-ui-react';
 import { FaDumbbell } from 'react-icons/fa';
-import { BiLogOut } from 'react-icons/bi';
+// import { BiLogOut } from 'react-icons/bi';
 
 
 export default function PageHeader({ user, handleLogout }) {

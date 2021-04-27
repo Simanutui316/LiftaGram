@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true, lowercase: true, unique: true },
   email: { type: String, required: true, lowercase: true, unique: true },
   total: Number,
+  bio: { type: String },
   password: String,
   photoUrl: String  // string from aws!
 }, {

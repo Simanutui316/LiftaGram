@@ -13,8 +13,8 @@ function ProfileBio({ user }) {
                     <Segment vertical>
                         <h3>{user.username}</h3>
                     </Segment>
-                    <Segment vertical>
-                        <h3>{user.total}</h3>
+                    <Segment>
+                        <h3>Total: {user.total}</h3>
                     </Segment>
                     <Segment>
                         <span> Bio: {user.bio}</span>

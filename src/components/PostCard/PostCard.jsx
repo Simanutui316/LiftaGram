@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { removePost } from '../../utils/post-api';
 import { Card, Icon, Image, Feed } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { GiWeightLiftingUp } from 'react-icons/gi';
 import { useHistory } from 'react-router-dom';
+import * as postsApi from '../../utils/post-api.js'
 
 
-function PostCard({ post, isProfile, addLike, removeLike, user }) {
 
+function PostCard({ post, isProfile, addLike, removeLike, user, getDeletePost }) {
+
+
+    const [posts, setPosts] = useState([]);
     // as the logged in the user when I add a like I want the heart to turn red
     // find out if the logged in user has liked the card
     const history = useHistory()
@@ -15,12 +19,27 @@ function PostCard({ post, isProfile, addLike, removeLike, user }) {
     // if one of the likes in post.likes is has the same username as are logged in user
     // it will return the index of that particular object in the post.likes array
     // if not it will return -1
-    const handleDeletePost = () => {
-        // e.preventDefault();
-        removePost(post._id);
-        history.push('/')
 
+
+    const handleDeletePost = () => {
+        getDeletePost(post);
     }
+
+    async function getPosts() {
+
+        try {
+            const data = await postsApi.getAll();
+            setPosts([...data.posts])
+        } catch (err) {
+            console.log(err, ' this is the error')
+        }
+    }
+
+    useEffect(() => {
+        getPosts()
+    }, [])
+
+
     const clickHandler = likedIndexNumber > - 1 ? () => removeLike(post.likes[likedIndexNumber]._id) : () => addLike(post._id);
     const likeColor = likedIndexNumber > -1 ? 'red' : 'grey';
     // as the logged in the user when I click on the heart and it is red I want 

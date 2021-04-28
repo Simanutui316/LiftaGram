@@ -49,6 +49,20 @@ export default function Feed({ user, handleLogout }) {
         }
     }
 
+    async function removeThePost(post) {
+        try {
+            await postsApi.removePost(post)
+            getPosts()
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const getDeletePost = (post) => {
+
+        removeThePost(post)
+    }
+
     async function getPosts() {
 
         try {
@@ -80,6 +94,7 @@ export default function Feed({ user, handleLogout }) {
             <Grid.Row>
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <PostFeed
+                        getDeletePost={getDeletePost}
                         user={user}
                         posts={posts}
                         numPhotosCol={1}

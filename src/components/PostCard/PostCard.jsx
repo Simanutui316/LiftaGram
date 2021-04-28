@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { removePost } from '../../utils/post-api';
+// import { removePost } from '../../utils/post-api';
 import { Card, Icon, Image, Feed } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { GiWeightLiftingUp } from 'react-icons/gi';
 import { useHistory } from 'react-router-dom';
-import * as postsApi from '../../utils/post-api.js'
+import * as postApi from '../../utils/post-api'
 
 
 
-function PostCard({ post, isProfile, addLike, removeLike, user, getDeletePost }) {
+function PostCard({ post, isProfile, addLike, removeLike, user, deletePost, setPosts, posts }) {
 
 
-    const [posts, setPosts] = useState([]);
+    // const [posts, setPosts] = useState([]);
+
     // as the logged in the user when I add a like I want the heart to turn red
     // find out if the logged in user has liked the card
     const history = useHistory()
@@ -21,23 +22,15 @@ function PostCard({ post, isProfile, addLike, removeLike, user, getDeletePost })
     // if not it will return -1
 
 
-    const handleDeletePost = () => {
-        getDeletePost(post);
-    }
-
-    async function getPosts() {
-
+    async function deletePost(postID) {
         try {
-            const data = await postsApi.getAll();
-            setPosts([...data.posts])
+            await postApi.deletePost(postID)
+            const newPosts = posts.filter(post => post._id !== postID)
+            setPosts(newPosts)
         } catch (err) {
-            console.log(err, ' this is the error')
+            console.log(err)
         }
     }
-
-    useEffect(() => {
-        getPosts()
-    }, [])
 
 
     const clickHandler = likedIndexNumber > - 1 ? () => removeLike(post.likes[likedIndexNumber]._id) : () => addLike(post._id);
@@ -73,7 +66,7 @@ function PostCard({ post, isProfile, addLike, removeLike, user, getDeletePost })
                 {post.likes.length} Likes
             </Card.Content>
             <Card.Content extra textAlign={'center'} style={{ backgroundColor: "black" }}>
-                <Icon name={'trash'} size='large' color={"red"} onClick={handleDeletePost} />
+                <Icon name={'trash'} size='large' color={"red"} onClick={() => deletePost(post._id)} />
             </Card.Content>
         </Card>
 

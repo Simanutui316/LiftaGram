@@ -15,7 +15,7 @@ export function create(post) {
     }).then(res => res.json())
 }
 
-export function removePost(postID) {
+export function deletePost(postID) {
     return fetch(`${BASE_URL}/${postID}`, {
         method: 'DELETE',
         headers: {

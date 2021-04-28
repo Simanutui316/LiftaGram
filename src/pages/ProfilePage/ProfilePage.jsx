@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Segment, Dimmer, Loader } from 'semantic-ui-react'
+import { Grid, Segment, Dimmer, Loader, Button, Transition, Form } from 'semantic-ui-react'
 import userService from '../../utils/userService';
 import ProfileBio from '../../components/ProfileBio/ProfileBio';
 import PostFeed from '../../components/PostFeed/PostFeed';
@@ -8,12 +8,26 @@ import SignupPage from '../SignupPage/SignupPage'
 import * as likesApi from '../../utils/likesServices';
 import { useLocation } from 'react-router-dom';
 
-export default function ProfilePage({ user, handleLogout }) {
+export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMessage }) {
 
+    const [visible, setVisible] = useState(false)
     const [posts, setPosts] = useState([])
     const [profileUser, setProfileUser] = useState({})
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
+    const [selectedFile, setSelectedFile] = useState('')
+    const [state, setState] = useState({
+        username: user.username,
+        bio: user.bio,
+        photoUrl: user.photoUrl
+    });
+
+    function handleChange(e) {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        })
+    }
 
     const location = useLocation()
     console.log(location)
@@ -61,8 +75,15 @@ export default function ProfilePage({ user, handleLogout }) {
         }
     }
 
+    function handleEditClick() {
+        setVisible(true)
 
+        setState()
 
+    }
+    function handleFileInput(e) {
+        setSelectedFile(e.target.files[0])
+    }
 
     useEffect(() => {
         getProfile()
@@ -89,6 +110,8 @@ export default function ProfilePage({ user, handleLogout }) {
                     <Grid.Row>
                         <Grid.Column>
                             <PageHeader user={user} handleLogout={handleLogout} />
+                            <Button onClick={handleEditClick}>Edit Profile</Button>
+
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
@@ -97,12 +120,56 @@ export default function ProfilePage({ user, handleLogout }) {
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row centered>
+                        <Transition visible={visible} animation='fly left' duration={500}>
+                            <Segment>
+                                <Form autoComplete="off" onSubmit={handleSubmit}>
+                                    <Segment className="profile-edit" stacked>
+                                        <Form.Input
+                                            name="username"
+                                            placeholder="username"
+                                            value={state.username}
+                                            onChange={handleChange}
+                                            required
+                                        />
+
+
+                                        <Form.Input
+                                            className="total"
+                                            name="total"
+                                            value={state.total}
+                                            placeholder="Gym Total?"
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                        <Form.TextArea label='bio' placeholder='Do you even lift bro...' name="bio" onChange={handleChange} />
+                                        <Form.Field>
+                                            <Form.Input
+                                                type="file"
+                                                name="photo"
+                                                placeholder="upload image"
+                                                onChange={handleFileInput}
+                                            />
+                                        </Form.Field>
+                                        <Button
+                                            type="submit"
+                                            className="btn"
+                                        >
+                                            Update Profile
+                                </Button>
+                                    </Segment>
+                                    {error ? <ErrorMessage error={error} /> : null}
+                                </Form>
+                            </Segment>
+                        </Transition>
                         <Grid.Column style={{ maxWidth: 750 }}>
                             <PostFeed isProfile={true} posts={posts} bio={user.bio} numPhotosCol={3} user={user} addLike={addLike} removeLike={removeLike} />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
+
+
             }
         </>
+
     )
 }

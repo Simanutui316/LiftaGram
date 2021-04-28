@@ -49,19 +49,19 @@ export default function Feed({ user, handleLogout }) {
         }
     }
 
-    async function removeThePost(post) {
-        try {
-            await postsApi.removePost(post)
-            getPosts()
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    // async function removeThePost(post) {
+    //     try {
+    //         await postsApi.removePost(post)
+    //         getPosts()
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
 
-    const getDeletePost = (post) => {
+    // const getDeletePost = (post) => {
 
-        removeThePost(post)
-    }
+    //     removeThePost(post)
+    // }
 
     async function getPosts() {
 
@@ -94,13 +94,14 @@ export default function Feed({ user, handleLogout }) {
             <Grid.Row>
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <PostFeed
-                        getDeletePost={getDeletePost}
+                        // getDeletePost={getDeletePost}
                         user={user}
                         posts={posts}
                         numPhotosCol={1}
                         isProfile={false}
                         addLike={addLike}
                         removeLike={removeLike}
+                        setPosts={setPosts}
                     />
                 </Grid.Column>
             </Grid.Row>

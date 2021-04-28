@@ -67,12 +67,10 @@ async function index(req, res) {
 
 async function deletePost(req, res) {
     try {
-        Post.find({ 'posts._id': req.params._id });
-        res.render('/')
-
-        await post.remove
+        await Post.findByIdAndDelete(req.params.id);
         res.json({ data: 'post removed' })
     } catch (err) {
         res.json({ error: err })
     }
 }
+

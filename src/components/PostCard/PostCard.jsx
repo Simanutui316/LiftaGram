@@ -3,13 +3,14 @@ import { removePost } from '../../utils/post-api';
 import { Card, Icon, Image, Feed } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { GiWeightLiftingUp } from 'react-icons/gi';
+import { useHistory } from 'react-router-dom';
 
 
 function PostCard({ post, isProfile, addLike, removeLike, user }) {
 
     // as the logged in the user when I add a like I want the heart to turn red
     // find out if the logged in user has liked the card
-
+    const history = useHistory()
     const likedIndexNumber = post.likes.findIndex(like => like.username === user.username);
     // if one of the likes in post.likes is has the same username as are logged in user
     // it will return the index of that particular object in the post.likes array
@@ -17,6 +18,7 @@ function PostCard({ post, isProfile, addLike, removeLike, user }) {
     const handleDeletePost = () => {
         // e.preventDefault();
         removePost(post._id);
+        history.push('/')
 
     }
     const clickHandler = likedIndexNumber > - 1 ? () => removeLike(post.likes[likedIndexNumber]._id) : () => addLike(post._id);

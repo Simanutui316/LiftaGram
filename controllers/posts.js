@@ -1,13 +1,15 @@
 const Post = require('../models/post');
 const S3 = require('aws-sdk/clients/s3');
 const { v4: uuidv4 } = require('uuid');
+const post = require('../models/post');
 const s3 = new S3();
 
 const BUCKET_NAME = process.env.BUCKET_NAME
 
 module.exports = {
     create,
-    index
+    index,
+    deletePost
 }
 
 
@@ -60,5 +62,17 @@ async function index(req, res) {
         res.status(200).json({ posts })
     } catch (err) {
         res.json(err)
+    }
+}
+
+async function deletePost(req, res) {
+    try {
+        Post.find({ 'posts._id': req.params._id });
+        res.render('/')
+
+        await post.remove
+        res.json({ data: 'post removed' })
+    } catch (err) {
+        res.json({ error: err })
     }
 }

@@ -155,8 +155,8 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, isProfil
                                         handleUpdateProfilePhoto={handleUpdateProfilePhoto}
                                     />
                                 </Grid.Column>
-                                    : ''
-                                }
+                                {/* : '' */}
+                                {/* } */}
                             </Grid.Row>
                             <Button onClick={handleEditClick}>Edit Profile</Button>
 

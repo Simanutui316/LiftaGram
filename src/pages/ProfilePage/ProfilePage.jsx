@@ -12,7 +12,7 @@ import { useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 
-export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMessage, handleChange, update, handleSignUpOrLogin, handleUpdateProfilePhoto }) {
+export default function ProfilePage({ user, handleLogout, handleSubmit, isProfile, ErrorMessage, handleChange, handleSignUpOrLogin, handleUpdateProfilePhoto }) {
 
     const [visible, setVisible] = useState(false)
     const [posts, setPosts] = useState([])
@@ -22,8 +22,8 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
     const [selectedFile, setSelectedFile] = useState('')
     const [state, setState] = useState({
         username: user.username,
-        bio: user.bio,
-        photoUrl: user.photoUrl
+        bio: user.bio
+        // photoUrl: user.photoUrl
     });
 
     function handleChange(e) {
@@ -34,8 +34,8 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
     }
     const history = useHistory()
     const location = useLocation()
+    // const i
     console.log(location)
-
 
     async function addLike(postId) {
         try {
@@ -86,16 +86,16 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
 
 
     function handleEditClick() {
+
         setVisible(true)
-
-
-
     }
 
-    function handleFileInput(e) {
-        setSelectedFile(e.target.files[0])
 
-    }
+
+    // function handleFileInput(e) {
+    //     setSelectedFile(e.target.files[0])
+
+    // }
 
     async function deletePost(postID) {
         try {
@@ -111,9 +111,10 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            await user.update(state);
+            await userService.update(state);
+            handleSignUpOrLogin()
             setVisible(false)
-            history.push('/')
+            // history.push('/')
         } catch (err) {
             console.log(err.message)
             setError(err.message)
@@ -145,12 +146,17 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
                     <Grid.Row>
                         <Grid.Column>
                             <PageHeader user={user} handleLogout={handleLogout} />
+
                             <Grid.Row>
+                                {/* : '' */}
+                                {/* {isID = { true} ? */}
                                 <Grid.Column>
                                     <UpdateProfilePhotoForm
                                         handleUpdateProfilePhoto={handleUpdateProfilePhoto}
                                     />
                                 </Grid.Column>
+                                    : ''
+                                }
                             </Grid.Row>
                             <Button onClick={handleEditClick}>Edit Profile</Button>
 
@@ -184,14 +190,14 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
                                             required
                                         />
                                         <Form.TextArea label='bio' placeholder='Do you even lift bro...' name="bio" onChange={handleChange} />
-                                        <Form.Field>
+                                        {/* <Form.Field>
                                             <Form.Input
                                                 type="file"
                                                 name="photo"
                                                 placeholder="upload image"
                                                 onChange={handleFileInput}
                                             />
-                                        </Form.Field>
+                                        </Form.Field> */}
                                         <Button
                                             type="submit"
                                             className="btn"

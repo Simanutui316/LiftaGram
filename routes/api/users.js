@@ -7,11 +7,11 @@ const upload = multer();
 router.post('/signup', upload.single('photo'), usersCtrl.signup);
 router.post('/login', usersCtrl.login);
 router.get('/:username', usersCtrl.profile);
-router.put('/', upload.single('photo'), usersCtrl.updateProfilePhoto);
 
 
 /*---------- Protected Routes ----------*/
-
+router.put('/', upload.single('photo'), usersCtrl.updateProfilePhoto);
+router.put('/', usersCtrl.update);
 
 
 

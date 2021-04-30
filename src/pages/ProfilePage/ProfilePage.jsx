@@ -4,11 +4,14 @@ import userService from '../../utils/userService';
 import ProfileBio from '../../components/ProfileBio/ProfileBio';
 import PostFeed from '../../components/PostFeed/PostFeed';
 import PageHeader from '../../components/Header/Header';
-import SignupPage from '../SignupPage/SignupPage'
+import SignUpPage from '../SignupPage/SignupPage';
+import UpdateProfilePhotoForm from '../../components/UpdateProfilePhoto/UpdateProfilePhoto';
 import * as likesApi from '../../utils/likesServices';
 import { useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMessage }) {
+
+export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMessage, handleChange, update, handleSignUpOrLogin, handleUpdateProfilePhoto }) {
 
     const [visible, setVisible] = useState(false)
     const [posts, setPosts] = useState([])
@@ -28,7 +31,7 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
             [e.target.name]: e.target.value
         })
     }
-
+    const history = useHistory()
     const location = useLocation()
     console.log(location)
 
@@ -53,7 +56,11 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
         }
     }
 
-
+    async function handleUpdateProfilePhoto(photo) {
+        const updatedUser = await userService.updateProfilePhoto(photo);
+        handleSignUpOrLogin()
+        console.log(updatedUser)
+    }
 
 
     async function getProfile() {
@@ -75,20 +82,37 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
         }
     }
 
+
+
     function handleEditClick() {
         setVisible(true)
 
-        setState()
+
 
     }
+
     function handleFileInput(e) {
         setSelectedFile(e.target.files[0])
+
+    }
+
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        try {
+            await user.update(state);
+            setVisible(false)
+            history.push('/')
+        } catch (err) {
+            console.log(err.message)
+            setError(err.message)
+        }
     }
 
     useEffect(() => {
         getProfile()
 
-    }, [location.pathname.substring(1)])
+    }, [location.pathname.substring(1), user])
 
 
 
@@ -110,6 +134,13 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
                     <Grid.Row>
                         <Grid.Column>
                             <PageHeader user={user} handleLogout={handleLogout} />
+                            <Grid.Row>
+                                <Grid.Column>
+                                    <UpdateProfilePhotoForm
+                                        handleUpdateProfilePhoto={handleUpdateProfilePhoto}
+                                    />
+                                </Grid.Column>
+                            </Grid.Row>
                             <Button onClick={handleEditClick}>Edit Profile</Button>
 
                         </Grid.Column>
@@ -120,14 +151,14 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row centered>
-                        <Transition visible={visible} animation='fly left' duration={500}>
+                        <Transition visible={visible} animation='fly up' duration={500}>
                             <Segment>
                                 <Form autoComplete="off" onSubmit={handleSubmit}>
                                     <Segment className="profile-edit" stacked>
                                         <Form.Input
                                             name="username"
                                             placeholder="username"
-                                            value={state.username}
+                                            value={user.username}
                                             onChange={handleChange}
                                             required
                                         />
@@ -136,7 +167,7 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
                                         <Form.Input
                                             className="total"
                                             name="total"
-                                            value={state.total}
+                                            value={user.total}
                                             placeholder="Gym Total?"
                                             onChange={handleChange}
                                             required

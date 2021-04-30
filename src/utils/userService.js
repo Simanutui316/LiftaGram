@@ -56,11 +56,38 @@ function getProfile(username) {
   })
 }
 
+function update(data) {
+  return fetch('/api/users', {
+    method: 'PUT',
+    body: JSON.stringify(data)
+  }).then(res => {
+    if (res.ok) return res.json();
+    throw new Error('Unable to update user!');
+  }).then(({ token }) => tokenService.setToken(token));
+}
+
+function updateProfilePhoto(photo) {
+  return fetch(BASE_URL, {
+    method: 'PUT',
+    body: photo,
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  })
+    .then(res => {
+      if (res.ok) return res.json();
+      throw new Error('Bad Credentials!')
+    })
+    .then(({ token }) => tokenService.setToken(token));
+}
+
 
 export default {
   signup,
   logout,
   login,
   getUser,
+  update,
+  updateProfilePhoto,
   getProfile
 };

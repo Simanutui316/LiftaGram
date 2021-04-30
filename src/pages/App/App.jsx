@@ -39,7 +39,7 @@ function App() {
               <Feed user={user} handleLogout={handleLogout} />
             </Route>
             <Route path="/:username">
-              <ProfilePage user={user} handleLogout={handleLogout} />
+              <ProfilePage user={user} handleSignUpOrLogin={handleSignUpOrLogin} handleLogout={handleLogout} />
             </Route>
           </Switch>
 

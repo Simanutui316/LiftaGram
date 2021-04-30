@@ -10,8 +10,44 @@ const s3 = new S3(); // initialize the construcotr
 module.exports = {
   signup,
   login,
-  profile
+  profile,
+  update,
+  updateProfilePhoto
 };
+
+function updateProfilePhoto(req, res) {
+  // confirm we access to our multipart/formdata request
+  const filePath = `${uuidv4()}${req.file.originalname}`
+  const params = { Bucket: process.env.BUCKET_NAME, Key: filePath, Body: req.file.buffer };
+  s3.upload(params, async function (err, data) {
+    console.log(data, err, 'from aws'); // data.Location is our photoUrl that exists on aws
+    try {
+      const updatedUser = await User.findOneAndUpdate({ _id: req.user._id },
+        { photoUrl: data.Location }, { new: true });
+      console.log(updatedUser);
+      const token = createJWT(updatedUser); // user is the payload so this is the object in our jwt
+      res.json({ token });
+    } catch (err) {
+      // Probably a duplicate email
+      console.log(err);
+      res.status(400).json(err);
+    }
+  })
+}
+
+async function update(req, res) {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    user.username = req.body.username;
+    user.total = req.body.total
+    user.bio = req.body.bio;
+    await user.save();
+    const token = createJWT(user);
+    res.json({ token });
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+}
 
 function signup(req, res) {
   console.log(req.body, req.file)

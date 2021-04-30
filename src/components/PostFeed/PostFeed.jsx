@@ -3,7 +3,7 @@ import { Card } from 'semantic-ui-react'
 import PostCard from '../PostCard/PostCard';
 
 
-export default function PostFeed({ posts, numPhotosCol, isProfile, addLike, removeLike, user, setPosts }) {
+export default function PostFeed({ posts, numPhotosCol, isProfile, addLike, removeLike, user, setPosts, deletePost }) {
 
 
 
@@ -22,6 +22,7 @@ export default function PostFeed({ posts, numPhotosCol, isProfile, addLike, remo
                         addLike={addLike}
                         removeLike={removeLike}
                         setPosts={setPosts}
+                        deletePost={deletePost}
 
                     />
                 )

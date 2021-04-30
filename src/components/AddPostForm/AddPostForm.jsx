@@ -4,9 +4,10 @@ import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react'
 
 export default function AddLiftForm(props) {
     const [selectedFile, setSelectedFile] = useState('')
-    const [state, setState] = useState({
+    const initState = {
         caption: ''
-    })
+    }
+    const [state, setState] = useState('')
 
     function handleFileInput(e) {
         setSelectedFile(e.target.files[0])
@@ -32,6 +33,7 @@ export default function AddLiftForm(props) {
 
         // Have to submit the form now! We need a function!
         props.handleAddPost(formData)
+        setState(initState)
     }
 
 

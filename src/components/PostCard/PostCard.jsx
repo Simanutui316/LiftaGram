@@ -22,15 +22,15 @@ function PostCard({ post, isProfile, addLike, removeLike, user, deletePost, setP
     // if not it will return -1
 
 
-    async function deletePost(postID) {
-        try {
-            await postApi.deletePost(postID)
-            const newPosts = posts.filter(post => post._id !== postID)
-            setPosts(newPosts)
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    // async function deletePost(postID) {
+    //     try {
+    //         await postApi.deletePost(postID)
+    //         const newPosts = posts.filter(post => post._id !== postID)
+    //         setPosts(newPosts)
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
 
 
     const clickHandler = likedIndexNumber > - 1 ? () => removeLike(post.likes[likedIndexNumber]._id) : () => addLike(post._id);
@@ -65,9 +65,14 @@ function PostCard({ post, isProfile, addLike, removeLike, user, deletePost, setP
                 <GiWeightLiftingUp color={likeColor} onClick={clickHandler} size='2vh' />
                 {post.likes.length} Likes
             </Card.Content>
-            <Card.Content extra textAlign={'center'} style={{ backgroundColor: "black" }}>
-                <Icon name={'trash'} size='large' color={"red"} onClick={() => deletePost(post._id)} />
-            </Card.Content>
+            { post.user === user._id ?
+
+                <Card.Content extra textAlign={'center'} style={{ backgroundColor: "black" }}>
+                    <Icon name={'trash'} size='large' color={"red"} onClick={() => deletePost(post._id)} />
+                </Card.Content>
+                : ''
+
+            }
         </Card>
 
     );

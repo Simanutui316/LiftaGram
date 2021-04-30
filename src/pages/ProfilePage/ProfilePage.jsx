@@ -7,6 +7,7 @@ import PageHeader from '../../components/Header/Header';
 import SignUpPage from '../SignupPage/SignupPage';
 import UpdateProfilePhotoForm from '../../components/UpdateProfilePhoto/UpdateProfilePhoto';
 import * as likesApi from '../../utils/likesServices';
+import * as postApi from '../../utils/post-api';
 import { useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
@@ -94,6 +95,16 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
     function handleFileInput(e) {
         setSelectedFile(e.target.files[0])
 
+    }
+
+    async function deletePost(postID) {
+        try {
+            await postApi.deletePost(postID)
+            const newPosts = posts.filter(post => post._id !== postID)
+            setPosts(newPosts)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
 
@@ -193,7 +204,16 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, ErrorMes
                             </Segment>
                         </Transition>
                         <Grid.Column style={{ maxWidth: 750 }}>
-                            <PostFeed isProfile={true} posts={posts} bio={user.bio} numPhotosCol={3} user={user} addLike={addLike} removeLike={removeLike} />
+                            <PostFeed
+                                isProfile={true}
+                                posts={posts}
+                                bio={user.bio}
+                                numPhotosCol={3}
+                                user={user}
+                                addLike={addLike}
+                                removeLike={removeLike}
+                                deletePost={deletePost}
+                            />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

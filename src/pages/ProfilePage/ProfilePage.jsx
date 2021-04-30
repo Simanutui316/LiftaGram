@@ -149,14 +149,14 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, isProfil
 
                             <Grid.Row>
                                 {/* : '' */}
-                                {/* {isID = { true} ? */}
-                                <Grid.Column>
-                                    <UpdateProfilePhotoForm
-                                        handleUpdateProfilePhoto={handleUpdateProfilePhoto}
-                                    />
-                                </Grid.Column>
-                                {/* : '' */}
-                                {/* } */}
+                                {profileUser._id === user._id ?
+                                    <Grid.Column>
+                                        <UpdateProfilePhotoForm
+                                            handleUpdateProfilePhoto={handleUpdateProfilePhoto}
+                                        />
+                                    </Grid.Column>
+                                    : ''
+                                }
                             </Grid.Row>
                             <Button onClick={handleEditClick}>Edit Profile</Button>
 

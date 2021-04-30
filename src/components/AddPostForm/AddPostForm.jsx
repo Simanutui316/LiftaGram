@@ -49,7 +49,7 @@ export default function AddLiftForm(props) {
                             className="form-control"
                             name="caption"
                             value={state.caption}
-                            placeholder="How much can you lift?"
+                            placeholder="Caption: "
                             onChange={handleChange}
                             required
                         />

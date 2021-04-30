@@ -1,5 +1,8 @@
 # LiftaGram
 
+LiftaGram (commonly abbreviated to LG or Lifta) is an American photo sharing social networking service created with Lifters in mind by Justin TuiSamoa. In April 2021. The app allows users to upload Photos that can be edited with filters and organized by hashtags and geographical tagging. Posts can be shared publicly or with pre-approved followers. Users can browse other users' content by tags and locations and view trending content. Users can like photos and follow other users to add their content to a personal feed.
+
+
 
 
 

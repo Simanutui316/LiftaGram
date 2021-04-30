@@ -7,7 +7,8 @@ import { FaDumbbell } from 'react-icons/fa';
 
 export default function PageHeader({ user, handleLogout }) {
     return (
-        <div color={'black'} className="header-fixed" >
+        // <div color={'black'}>
+        <Segment id="header-fixed" inverted>
             <Segment inverted>
                 <Header className='logout-icon' as='h2' floated='right'>
                     <Link to="/"><FaDumbbell color='white' size='5vh' /></Link>
@@ -24,6 +25,8 @@ export default function PageHeader({ user, handleLogout }) {
 
                 </Header>
             </Segment>
-        </div>
+        </Segment>
+        // </div>
+
     )
 }

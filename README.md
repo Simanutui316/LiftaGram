@@ -1,4 +1,4 @@
-![alt text](./public/LifaGram.png)
+![LiftaGram](./public/LifaGram.png)
 
 
 ## Table Contents  

@@ -1,4 +1,5 @@
-# LiftaGram
+# # ![alt text](./public/LifaGram.png)
+
 
 ## Table Contents  
 * [Overview](#overview)
@@ -55,6 +56,8 @@ Here is the link for
 ![Home Page](./public/feedPage.png) 
 #### Update Profile Photo
 ![Update Profile Picture](./public/updatePhoto.png) 
+#### Like Photo, add a rep
+![Like Post](./public/likePost.png) 
  
 
 ---

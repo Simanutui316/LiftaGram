@@ -37,7 +37,7 @@ function updateProfilePhoto(req, res) {
 
 async function update(req, res) {
   try {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ _id: req.user._id });
     user.username = req.body.username;
     user.total = req.body.total
     user.bio = req.body.bio;

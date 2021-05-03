@@ -42,7 +42,7 @@ export default function Feed({ user, handleLogout }) {
             const data = await postsApi.create(post)
             console.log(data, ' the response from the create route')
 
-            setPosts(posts => [data.post, ...posts])
+            setPosts(posts => [...posts, data.post])
 
         } catch (err) {
             console.log(err)

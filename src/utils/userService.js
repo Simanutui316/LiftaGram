@@ -57,7 +57,7 @@ function getProfile(username) {
 }
 
 function update(data) {
-  return fetch('/api/users', {
+  return fetch(BASE_URL, {
     method: 'PUT',
     body: JSON.stringify(data)
   }).then(res => {

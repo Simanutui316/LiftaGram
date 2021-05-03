@@ -10,7 +10,7 @@ export default function PostFeed({ posts, numPhotosCol, isProfile, addLike, remo
     return (
         <Card.Group itemsPerRow={numPhotosCol} stackable>
 
-            {posts.map((post) => {
+            {posts.reverse().map((post) => {
                 return (
                     <PostCard
                         // getDeletePost={getDeletePost}

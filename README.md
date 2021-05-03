@@ -1,6 +1,6 @@
 # LiftaGram
 
-LiftaGram (commonly abbreviated to LG or Lifta) is an American photo sharing social networking service created with Lifters in mind by Justin TuiSamoa. In April 2021. The app allows users to upload Photos that can be edited with filters and organized by hashtags and geographical tagging. Posts can be shared publicly or with pre-approved followers. Users can browse other users' content by tags and locations and view trending content. Users can like photos and follow other users to add their content to a personal feed.
+LiftaGram (Instagram-lite) is an American photo sharing social networking service created with Lifters in mind by Justin TuiSamoa. In April 2021. The app allows users to upload Photos that can be edited with filters and organized by hashtags and geographical tagging. Posts can be shared publicly or with pre-approved followers. Users can browse other users' content by tags and locations and view trending content. Users can like photos and follow other users to add their content to a personal feed.
 
 
 
@@ -9,42 +9,47 @@ LiftaGram (commonly abbreviated to LG or Lifta) is an American photo sharing soc
 
 
 
-## Setup 
+---
+---
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+## Getting Started  
+Here is the link for
+[LiftaGram](https://sheetmusicmaker.herokuapp.com/)  
 
+---
+---
 
-#### Setup your git repo
+## Technologies Used  
+* Frontend
+  * Javascript
+  * HTML
+  * CSS
+  * React
+  * Semantic UI
+* Backend
+  * Node.js
+  * Express.js
+  * MongoDB/Mongoose.js
+* Services
+  * AWS
+  * Atlas
+  * Heroku
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2.  Then follow the directions on github that says ```…or create a new repository on the command line```
+---
+---
+## Screenshots
 
-it should look like this
+#### Landing Page simply shows the signup
+![Landing Page](./public/signupPage.png) 
+#### Home Page gives site info and some community posts
+![Home Page](./public/feedPage.png) 
+#### Update Profile Photo
+![Update Profile Picture](./public/updatePhoto.png) 
+ 
 
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be
-git push -u origin master
-```
-
-#### Setup the App
-
-```npm install```
-
-*DOTENV*
-
-`touch .env`
-
-add your variables
-
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
-
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+---
+---
+## Development  
+### *Planning*:  
+View the 
+[Trello](https://trello.com/b/IpP1CjSF/sheet-music) board with wireframes and ERD. 

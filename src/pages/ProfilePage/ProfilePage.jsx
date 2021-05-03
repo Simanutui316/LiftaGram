@@ -12,7 +12,7 @@ import { useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 
-export default function ProfilePage({ user, handleLogout, handleSubmit, isProfile, ErrorMessage, handleChange, handleSignUpOrLogin, handleUpdateProfilePhoto }) {
+export default function ProfilePage({ user, handleLogout, update, handleSubmit, isProfile, ErrorMessage, handleChange, handleSignUpOrLogin, handleUpdateProfilePhoto }) {
 
     const [visible, setVisible] = useState(false)
     const [posts, setPosts] = useState([])
@@ -106,6 +106,16 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, isProfil
             console.log(err)
         }
     }
+    async function update() {
+        try {
+            const data = await userService.edit(state, user._id);
+            console.log(data, 'in editprofile after userService.edit')
+            handleSignUpOrLogin()
+            history.push('/')
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
 
     async function handleSubmit(e) {
@@ -113,7 +123,7 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, isProfil
         try {
             await userService.update(state);
             handleSignUpOrLogin()
-            setVisible(false)
+            // setVisible(false)
             // history.push('/')
         } catch (err) {
             console.log(err.message)
@@ -148,7 +158,6 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, isProfil
                             <PageHeader user={user} handleLogout={handleLogout} />
 
                             <Grid.Row>
-                                {/* : '' */}
                                 {profileUser._id === user._id ?
                                     <Grid.Column>
                                         <UpdateProfilePhotoForm
@@ -158,7 +167,7 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, isProfil
                                     : ''
                                 }
                             </Grid.Row>
-                            <Button onClick={handleEditClick}>Edit Profile</Button>
+                            {/* <Button onClick={handleEditClick}>Edit Profile</Button> */}
 
                         </Grid.Column>
                     </Grid.Row>
@@ -175,7 +184,7 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, isProfil
                                         <Form.Input
                                             name="username"
                                             placeholder="username"
-                                            value={user.username}
+                                            value={state.username}
                                             onChange={handleChange}
                                             required
                                         />
@@ -184,20 +193,13 @@ export default function ProfilePage({ user, handleLogout, handleSubmit, isProfil
                                         <Form.Input
                                             className="total"
                                             name="total"
-                                            value={user.total}
+                                            value={state.total}
                                             placeholder="Gym Total?"
                                             onChange={handleChange}
                                             required
                                         />
                                         <Form.TextArea label='bio' placeholder='Do you even lift bro...' name="bio" onChange={handleChange} />
-                                        {/* <Form.Field>
-                                            <Form.Input
-                                                type="file"
-                                                name="photo"
-                                                placeholder="upload image"
-                                                onChange={handleFileInput}
-                                            />
-                                        </Form.Field> */}
+
                                         <Button
                                             type="submit"
                                             className="btn"

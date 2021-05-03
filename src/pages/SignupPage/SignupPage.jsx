@@ -80,7 +80,7 @@ export default function SignUpPage(props) {
                         <Image src='https://i.imgur.com/Bo1xQk7.png' /> Sign Up
               </Header>
                     <Form autoComplete="off" onSubmit={handleSubmit}>
-                        <Segment stacked>
+                        <Segment stacked inverted>
                             <Form.Input
                                 name="username"
                                 placeholder="username"

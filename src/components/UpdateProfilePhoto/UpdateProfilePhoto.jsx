@@ -11,11 +11,9 @@ export default function UpdateProfilePhotoForm(props) {
     function handleSubmit(e) {
         e.preventDefault()
         console.log('is handlesUbmit being called?')
-        // Why do we need to create FormData
-        // what type of request are we making?
+
         const formData = new FormData()
         formData.append('photo', selectedFile)
-        // Have to submit the form now! We need a function!
         props.handleUpdateProfilePhoto(formData);
     }
     return (

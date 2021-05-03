@@ -94,12 +94,6 @@ body{
 }
 
 .profile-feed{
-  background-color: black;
+  /* background-color: black; */
 }
 
-/* #header-fixed{
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: 999;
-} */

@@ -19,7 +19,7 @@
 ## Overview
 
 
-*LiftaGram* (Instagram-lite) is an American photo sharing social networking service created with Lifters in mind by Justin TuiSamoa. In April 2021. The app allows users to upload Photos that can be captioned with. Posts can be shared publicly or with other lifters who havew signed up. Users can browse other users' content by visiting their profile pages and users can like photos and see other users posts and like their content you see on your post feed.
+*LiftaGram* (Instagram inspired) is an American photo sharing social networking service created with Lifters in mind by Justin TuiSamoa. In April 2021. The app allows users to upload Photos that can be captioned with. Posts can be shared publicly or with other lifters who havew signed up. Users can browse other users' content by visiting their profile pages and users can like photos and see other users posts and like their content you see on your post feed.
 
 
 ---
@@ -64,6 +64,7 @@ Here is the link for
 ![Like Post](./public/likePost.png) 
  
 
+
 ---
 ---
 ## Development  
@@ -76,3 +77,4 @@ View the
 * Allow users to follow each other
 * Messaging system
 * Video uploads
+* World Domination

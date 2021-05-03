@@ -66,9 +66,9 @@ align-items: center;
 a{
   color: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fgetwallpapers.com%2Fwallpaper%2Ffull%2F3%2Fd%2Fa%2F92243.jpg&f=1&nofb=1');
 }
-a:hover {
+/* a:hover {
  color:white;
-}
+} */
 
 .App-link {
   color: #61dafb;

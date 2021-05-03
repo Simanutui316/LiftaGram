@@ -24,7 +24,7 @@
 
 ## Getting Started  
 Here is the link for
-[LiftaGram](https://sheetmusicmaker.herokuapp.com/)  
+[LiftaGram](https://liftagrams.herokuapp.com/)  
 
 ---
 ---

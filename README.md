@@ -1,4 +1,4 @@
- ![LiftaGram](./public/lifaGram.png)
+# ![LiftaGram](https://i.imgur.com/FeCENwV.png)
 
 ---
 ---

@@ -1,5 +1,7 @@
-# ![LiftaGram](./public/lifaGram.png)
+ ![LiftaGram](./public/lifaGram.png)
 
+---
+---
 
 ## Table Contents  
 * [Overview](#overview)

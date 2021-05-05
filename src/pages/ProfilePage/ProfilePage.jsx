@@ -167,7 +167,7 @@ export default function ProfilePage({ user, handleLogout, update, handleSubmit, 
                                     : ''
                                 }
                             </Grid.Row>
-                            {/* <Button onClick={handleEditClick}>Edit Profile</Button> */}
+                            <Button onClick={handleEditClick}>Edit Profile</Button>
 
                         </Grid.Column>
                     </Grid.Row>
